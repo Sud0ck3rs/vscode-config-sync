@@ -1,0 +1,15 @@
+cryptohack.cryptohack-theme
+dbaeumer.vscode-eslint
+dsznajder.es7-react-js-snippets
+esbenp.prettier-vscode
+formulahendry.auto-rename-tag
+github.github-vscode-theme
+ms-python.debugpy
+ms-python.python
+ms-python.vscode-pylance
+ms-python.vscode-python-envs
+naumovs.color-highlight
+oderwat.indent-rainbow
+pkief.material-icon-theme
+usernamehw.errorlens
+xabikos.reactsnippets

@@ -1,0 +1,114 @@
+#!/usr/bin/env bash
+
+# ============================================
+#   VS CODE CLEAN BACKUP & RESTORE TEMPLATE
+# ============================================
+
+set -e
+
+TEMPLATE_DIR="./vscode-clean-config"
+OS_NAME="$(uname -s)"
+USER_DIR=""
+
+# Detect OS and locate VS Code User folder
+detect_user_dir() {
+  case "$OS_NAME" in
+    Darwin)
+      USER_DIR="$HOME/Library/Application Support/Code/User"
+      ;;
+    Linux)
+      USER_DIR="$HOME/.config/Code/User"
+      ;;
+    MINGW64_NT*|MSYS_NT*|CYGWIN_NT*)
+      USER_DIR="$APPDATA/Code/User"
+      ;;
+    *)
+      echo "[X] - OS non supporté: $OS_NAME"
+      exit 1
+      ;;
+  esac
+
+  if [ ! -d "$USER_DIR" ]; then
+    echo "[X] - Dossier VS Code introuvable : $USER_DIR"
+    exit 1
+  fi
+}
+
+# =========================
+#   CLEAN BACKUP
+# =========================
+backup_clean() {
+  detect_user_dir
+
+  echo "[] - Backup CLEAN de VS Code → $TEMPLATE_DIR"
+  rm -rf "$TEMPLATE_DIR"
+  mkdir -p "$TEMPLATE_DIR/User/snippets"
+
+  # Copy clean config files
+  cp "$USER_DIR/settings.json" "$TEMPLATE_DIR/User/settings.json"
+  cp "$USER_DIR/keybindings.json" "$TEMPLATE_DIR/User/keybindings.json"
+  cp -R "$USER_DIR/snippets" "$TEMPLATE_DIR/User"
+
+  # Export extension list
+  if command -v code >/dev/null; then
+    code --list-extensions > "$TEMPLATE_DIR/extensions.txt"
+    echo "[] - Extensions exportées."
+  else
+    echo "[] - ommande 'code' introuvable dans le PATH."
+  fi
+
+  echo "[] - Backup CLEAN terminé."
+}
+
+# =========================
+#       RESTORE CLEAN
+# =========================
+restore_clean() {
+  detect_user_dir
+
+  if [ ! -d "$TEMPLATE_DIR/User" ]; then
+    echo "[X] - Aucun template trouvé dans $TEMPLATE_DIR"
+    exit 1
+  fi
+
+  echo "[] - Restauration CLEAN de la config VS Code"
+
+  # Safe backup of current config
+  SAFE_BACKUP="$HOME/vscode-local-backup-$(date +%Y%m%d-%H%M%S)"
+  echo "[] - Backup local de sécurité : $SAFE_BACKUP"
+  mkdir -p "$SAFE_BACKUP"
+  cp -R "$USER_DIR" "$SAFE_BACKUP/User"
+
+  # Restore clean config
+  echo "[] - Copie du template propre…"
+  rm -rf "$USER_DIR"
+  mkdir -p "$(dirname "$USER_DIR")"
+  cp -R "$TEMPLATE_DIR/User" "$USER_DIR"
+
+  # Restore extensions
+  if [ -f "$TEMPLATE_DIR/extensions.txt" ]; then
+    echo "[] - Restauration des extensions…"
+    cat "$TEMPLATE_DIR/extensions.txt" | xargs -n 1 code --install-extension
+  fi
+
+  echo "[] - Restauration CLEAN terminée."
+  echo "[] - ancienne config sauvegardée dans : $SAFE_BACKUP"
+}
+
+# =========================
+#        DISPATCH
+# =========================
+case "$1" in
+  backup)
+    backup_clean
+    ;;
+  restore)
+    restore_clean
+    ;;
+  *)
+    echo "Usage:"
+    echo "  ./vscode-template.sh backup   → export clean"
+    echo "  ./vscode-template.sh restore  → import clean"
+    exit 1
+    ;;
+esac
