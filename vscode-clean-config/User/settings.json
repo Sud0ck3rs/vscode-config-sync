@@ -15,5 +15,13 @@
     "rgba(255,127,255,0.07)",
     "rgba(79,236,236,0.07)"
   ],
-  "tabnine.experimentalAutoImports": true
+  "tabnine.experimentalAutoImports": true,
+  "chatgpt.cliExecutable": "",
+  "chat.disableAIFeatures": true,
+  "workbench.settings.showAISearchToggle": false,
+  "python.analysis.aiCodeActions": {
+    "implementAbstractClasses": true,
+    "generateSymbol": true,
+    "convertFormatString": true
+  }
 }
