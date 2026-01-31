@@ -5,6 +5,8 @@ dsznajder.es7-react-js-snippets
 esbenp.prettier-vscode
 formulahendry.auto-rename-tag
 github.github-vscode-theme
+keksiqc.idx-monospace-theme
+mhutchie.git-graph
 ms-python.debugpy
 ms-python.python
 ms-python.vscode-pylance
