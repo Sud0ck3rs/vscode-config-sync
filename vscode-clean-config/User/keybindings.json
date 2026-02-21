@@ -35,5 +35,9 @@
   {
     "key": "ctrl+alt+n",
     "command": "workbench.action.duplicateWorkspaceInNewWindow"
+  },
+  {
+    "key": "ctrl+alt+t",
+    "command": "workbench.action.terminal.toggleTerminal"
   }
 ]
