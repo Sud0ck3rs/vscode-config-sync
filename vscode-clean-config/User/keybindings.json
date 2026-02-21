@@ -27,5 +27,13 @@
       "kind": "source.addMissingImports",
       "apply": "first"
     }
+  },
+  {
+    "key": "ctrl+shift+n",
+    "command": "workbench.action.newWindow"
+  },  
+  {
+    "key": "ctrl+alt+n",
+    "command": "workbench.action.duplicateWorkspaceInNewWindow"
   }
 ]
