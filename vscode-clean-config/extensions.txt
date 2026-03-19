@@ -1,5 +1,6 @@
 bradlc.vscode-tailwindcss
 cryptohack.cryptohack-theme
+danielroedl.meld-diff
 dbaeumer.vscode-eslint
 dsznajder.es7-react-js-snippets
 esbenp.prettier-vscode
@@ -19,5 +20,6 @@ oderwat.indent-rainbow
 openai.chatgpt
 pkief.material-icon-theme
 usernamehw.errorlens
+vstirbu.vscode-mermaid-preview
 xabikos.reactsnippets
 yoavbls.pretty-ts-errors
