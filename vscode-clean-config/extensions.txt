@@ -17,6 +17,7 @@ ms-vscode.remote-explorer
 naumovs.color-highlight
 oderwat.indent-rainbow
 openai.chatgpt
+anthropic.claude-code
 pkief.material-icon-theme
 usernamehw.errorlens
 vstirbu.vscode-mermaid-preview
