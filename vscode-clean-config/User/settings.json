@@ -1,5 +1,6 @@
 {
   "workbench.iconTheme": "material-icon-theme",
+  "workbench.secondarySideBar.defaultVisibility": "hidden",
 
   "editor.tabSize": 2,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
