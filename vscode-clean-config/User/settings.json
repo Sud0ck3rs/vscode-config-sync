@@ -1,6 +1,8 @@
 {
+  "workbench.colorTheme": "Space Dark",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.secondarySideBar.defaultVisibility": "hidden",
+  "workbench.settings.showAISearchToggle": false,
 
   "editor.tabSize": 2,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -18,11 +20,15 @@
   "claudeCode.preferredLocation": "sidebar",
   "chatgpt.cliExecutable": "",
   "chat.disableAIFeatures": true,
-  "workbench.settings.showAISearchToggle": false,
   "python.analysis.aiCodeActions": {
     "implementAbstractClasses": true,
     "generateSymbol": true,
     "convertFormatString": true,
   },
-  "workbench.colorTheme": "Space Dark",
+  "[python]": {
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.defaultColorDecorators": "never",
+    "editor.formatOnType": true,
+    "editor.wordBasedSuggestions": "off",
+  },
 }
