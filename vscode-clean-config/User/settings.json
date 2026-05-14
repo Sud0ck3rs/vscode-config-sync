@@ -31,4 +31,5 @@
     "editor.formatOnType": true,
     "editor.wordBasedSuggestions": "off",
   },
+  "git.enableSmartCommit": true,
 }
